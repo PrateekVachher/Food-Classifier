@@ -144,6 +144,7 @@ def downloaderpatch(string1):
         dir_name = dir_name.split()
         dir_name.remove('fruit')
         dir_name = ' '.join(dir_name)
+        dir_name = 'tf_files/fruits/'
         try:
             os.makedirs(dir_name)
         except OSError as e:

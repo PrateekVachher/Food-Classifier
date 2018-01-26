@@ -111,91 +111,101 @@ else:  # If the Current Version of Python is 2.x
     from urllib2 import URLError, HTTPError
 
 # Download Image Links
-errorCount = 0
-i = 0
-while i < len(search_keyword):
-    items = []
-    iteration = "\n" + "Item no.: " + str(i + 1) + " -->" + " Item name = " + str(search_keyword[i])
-    print (iteration)
-    print ("Evaluating...")
-    search_term = search_keyword[i]
-    search = search_term.replace(' ', '%20')
-    dir_name = search_term + ('-' + args.color if args.color else '')
+def downloaderpatch(string1):
+    search_keyword = [string1]
+    errorCount = 0
+    i = 0
+    while i < len(search_keyword):
+        items = []
+        iteration = "\n" + "Item no.: " + str(i + 1) + " -->" + " Item name = " + str(search_keyword[i])
+        print (iteration)
+        print ("Evaluating...")
+        search_term = search_keyword[i]
+        search = search_term.replace(' ', '%20')
+        dir_name = search_term + ('-' + args.color if args.color else '')
 
-    # make a search keyword  directory
-    try:
-        os.makedirs(dir_name)
-    except OSError as e:
-        if e.errno != 17:
-            raise
-            # time.sleep might help here
-        pass
-
-    j = 0
-    color_param = ('&tbs=ic:specific,isc:' + args.color) if args.color else ''
-    url = 'https://www.google.com/search?q=' + search + '&espv=2&biw=1366&bih=667&site=webhp&source=lnms&tbm=isch' + color_param + '&sa=X&ei=XosDVaCXD8TasATItgE&ved=0CAcQ_AUoAg'
-    raw_html = (download_page(url))
-    time.sleep(0.1)
-    items = items + (_images_get_all_items(raw_html))
-    print ("Total Image Links = " + str(len(items)))
-
-    # This allows you to write all the links into a test file. This text file will be created in the same directory as your code. You can comment out the below 3 lines to stop writing the output to the text file.
-    info = open('output.txt', 'a')  # Open the text file called database.txt
-    info.write(str(i) + ': ' + str(search_keyword[i - 1]) + ": " + str(items))  # Write the title of the page
-    info.close()  # Close the file
-
-    t1 = time.time()  # stop the timer
-    total_time = t1 - t0  # Calculating the total time required to crawl, find and download all the links of 60,000 images
-    print("Total time taken: " + str(total_time) + " Seconds")
-    print ("Starting Download...")
-
-    ## To save imges to the same directory
-    # IN this saving process we are just skipping the URL if there is any error
-    k = 0
-    while (k < limit):
+        # make a search keyword  directory
         try:
-            req = Request(items[k], headers={
-                "User-Agent": "Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.17 (KHTML, like Gecko) Chrome/24.0.1312.27 Safari/537.17"})
-            response = urlopen(req, None, 15)
-            image_name = str(items[k][(items[k].rfind('/'))+1:])
-            if '?' in image_name:
-                image_name = image_name[:image_name.find('?')]
-            if ".jpg" in image_name or ".png" in image_name or ".jpeg" in image_name or ".svg" in image_name:
-                output_file = open(dir_name + "/" + str(k + 1) + ". " + image_name, 'wb')
-            else:
-                output_file = open(dir_name + "/" + str(k + 1) + ". " + image_name + ".jpg", 'wb')
-                image_name = image_name + ".jpg"
+            os.makedirs(dir_name)
+        except OSError as e:
+            if e.errno != 17:
+                raise
+                # time.sleep might help here
+            pass
 
-            data = response.read()
-            output_file.write(data)
-            response.close()
+        j = 0
+        color_param = ('&tbs=ic:specific,isc:' + args.color) if args.color else ''
+        url = 'https://www.google.com/search?q=' + search + '&espv=2&biw=1366&bih=667&site=webhp&source=lnms&tbm=isch' + color_param + '&sa=X&ei=XosDVaCXD8TasATItgE&ved=0CAcQ_AUoAg'
+        raw_html = (download_page(url))
+        time.sleep(0.1)
+        items = items + (_images_get_all_items(raw_html))
+        print ("Total Image Links = " + str(len(items)))
 
-            print("completed ====> " + str(k + 1) + ". " + image_name)
+        # This allows you to write all the links into a test file. This text file will be created in the same directory as your code. You can comment out the below 3 lines to stop writing the output to the text file.
+        info = open('output.txt', 'a')  # Open the text file called database.txt
+        info.write(str(i) + ': ' + str(search_keyword[i - 1]) + ": " + str(items))  # Write the title of the page
+        info.close()  # Close the file
 
-            k = k + 1
+        t1 = time.time()  # stop the timer
+        total_time = t1 - t0  # Calculating the total time required to crawl, find and download all the links of 60,000 images
+        print("Total time taken: " + str(total_time) + " Seconds")
+        print ("Starting Download...")
 
-        except IOError:  # If there is any IOError
+        ## To save imges to the same directory
+        # IN this saving process we are just skipping the URL if there is any error
+        k = 0
+        while (k < limit):
+            try:
+                req = Request(items[k], headers={
+                    "User-Agent": "Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.17 (KHTML, like Gecko) Chrome/24.0.1312.27 Safari/537.17"})
+                response = urlopen(req, None, 15)
+                image_name = str(items[k][(items[k].rfind('/'))+1:])
+                if '?' in image_name:
+                    image_name = image_name[:image_name.find('?')]
+                if ".jpg" in image_name or ".png" in image_name or ".jpeg" in image_name or ".svg" in image_name:
+                    output_file = open(dir_name + "/" + str(k + 1) + ". " + image_name, 'wb')
+                else:
+                    output_file = open(dir_name + "/" + str(k + 1) + ". " + image_name + ".jpg", 'wb')
+                    image_name = image_name + ".jpg"
 
-            errorCount += 1
-            print("IOError on image " + str(k + 1))
-            k = k + 1
+                data = response.read()
+                output_file.write(data)
+                response.close()
 
-        except HTTPError as e:  # If there is any HTTPError
+                print("completed ====> " + str(k + 1) + ". " + image_name)
 
-            errorCount += 1
-            print("HTTPError" + str(k))
-            k = k + 1
-        except URLError as e:
+                k = k + 1
 
-            errorCount += 1
-            print("URLError " + str(k))
-            k = k + 1
+            except IOError:  # If there is any IOError
 
-    i = i + 1
+                errorCount += 1
+                print("IOError on image " + str(k + 1))
+                k = k + 1
 
-print("\n")
-print("Everything downloaded!")
-print("Total Errors: "+ str(errorCount) + "\n")
+            except HTTPError as e:  # If there is any HTTPError
+
+                errorCount += 1
+                print("HTTPError" + str(k))
+                k = k + 1
+            except URLError as e:
+
+                errorCount += 1
+                print("URLError " + str(k))
+                k = k + 1
+
+        i = i + 1
+
+    print("\n")
+    print("Everything downloaded!")
+    print("Total Errors: "+ str(errorCount) + "\n")
 
 # ----End of the main program ----#
 # In[ ]:
+
+if __name__ == '__main__':
+    jobs = []
+    a = to_be_downloaded
+    for i in range(3):
+        p = multiprocessing.Process(target=downloaderpatch, args=(a[i],))
+        jobs.append(p)
+        p.start()

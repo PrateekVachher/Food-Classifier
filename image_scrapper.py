@@ -18,14 +18,14 @@ parser.add_argument('-l', '--limit', help='delimited list input', type=str, requ
 parser.add_argument('-c', '--color', help='filter on color', type=str, required=False, choices=['red', 'orange', 'yellow', 'green', 'teal', 'blue', 'purple', 'pink', 'white', 'gray', 'black', 'brown'])
 args = parser.parse_args()
 
-to_be_downloaded = ['apple','banana','orange','guava','cherry']
+to_be_downloaded = ['apple fruit','banana fruit','orange fruit','guava fruit','cherry fruit']
 
 search_keyword = [str(item) for item in to_be_downloaded]
 #setting limit on number of images to be downloaded
-limit = 100
+limit = 200
 
 # This list is used to further add suffix to your search term. Each element of the list will help you download 100 images. First element is blank which denotes that no suffix is added to the search keyword of the above list. You can edit the list by adding/deleting elements from it.So if the first element of the search_keyword is 'Australia' and the second element of keywords is 'high resolution', then it will search for 'Australia High Resolution'
-keywords = [' fruit high resolution', ' fruit farm']
+keywords = [' high resolution', ' farm']
 
 
 # Downloading entire Web Document (Raw Page Content)

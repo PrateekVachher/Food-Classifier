@@ -154,7 +154,7 @@ def downloaderpatch(string1):
         ## To save imges to the same directory
         # IN this saving process we are just skipping the URL if there is any error
         k = 0
-        while (k < limit):
+         while (k < limit):
             try:
                 req = Request(items[k], headers={
                     "User-Agent": "Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.17 (KHTML, like Gecko) Chrome/24.0.1312.27 Safari/537.17"})
@@ -163,14 +163,11 @@ def downloaderpatch(string1):
                 if '?' in image_name:
                     image_name = image_name[:image_name.find('?')]
                 if ".jpg" in image_name or ".png" in image_name or ".jpeg" in image_name or ".svg" in image_name:
-                    output_file = open(dir_name + "/" + str(k + 1) + ".jpg", 'wb')
+                    output_file = open(dir_name + "/" + str(k + 1) + ". " + image_name, 'wb')
                 else:
-                    output_file = open(dir_name + "/" + str(k + 1) + ".jpg", 'wb')
+                    output_file = open(dir_name + "/" + str(k + 1) + ". " + image_name + ".jpg", 'wb')
                     image_name = image_name + ".jpg"
-<<<<<<< HEAD
 
-=======
->>>>>>> cfa1f92720d5a6cbfb1505b4b809f6bf1a6a1f71
                 data = response.read()
                 output_file.write(data)
                 response.close()
@@ -195,9 +192,9 @@ def downloaderpatch(string1):
                 errorCount += 1
                 print("URLError " + str(k))
                 k = k + 1
-        convert_form(dir_name)
 
         i = i + 1
+
 
 
     print("\n")

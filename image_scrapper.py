@@ -161,13 +161,10 @@ def downloaderpatch(string1):
                 if '?' in image_name:
                     image_name = image_name[:image_name.find('?')]
                 if ".jpg" in image_name or ".png" in image_name or ".jpeg" in image_name or ".svg" in image_name:
-                    output_file = open(dir_name + "/" + str(k + 1) + ". " + image_name, 'wb')
+                    output_file = open(dir_name + "/" + str(k + 1) + ".jpg", 'wb')
                 else:
-                    output_file = open(dir_name + "/" + str(k + 1) + ". " + image_name + ".jpg", 'wb')
+                    output_file = open(dir_name + "/" + str(k + 1) + ".jpg", 'wb')
                     image_name = image_name + ".jpg"
-                im = Image.open(image_name)
-                rgb_im = im.convert('RGB')
-                rgb_im.save(image_name)
                 data = response.read()
                 output_file.write(data)
                 response.close()

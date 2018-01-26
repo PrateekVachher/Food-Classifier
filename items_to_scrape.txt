@@ -1,15 +1,14 @@
-coconut fruit
-lychee fruit
-tomato fruit
-dragonfruit fruit
-apricot fruit
-avocado fruit
-cucumber fruit
-custardapple fruit
-passionfruit fruit
-pear fruit
-peach fruit
-raspberry fruit
-strawberry fruit
-pumpkin fruit
-
+Burger
+Pizza
+Pasta
+Noodles
+Bread
+Nachos
+French Fries
+Brownie
+Cake
+Cookie
+Carrot
+Pancake
+Steak
+Fried Rice

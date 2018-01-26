@@ -140,7 +140,6 @@ def downloaderpatch(string1):
         print("Total time taken: " + str(total_time) + " Seconds")
         print ("Starting Download...")
         dir_name = dir_name.split()
-        dir_name.remove('fruit')
         dir_name = ' '.join(dir_name)
         dir_name = 'tf_files/fruits/'+dir_name
         try:

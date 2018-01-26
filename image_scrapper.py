@@ -5,6 +5,7 @@
 
 # Import Libraries
 import time  # Importing the time library to check the time of code execution
+import multiprocessing
 import sys  # Importing the System Library
 import os
 import argparse
@@ -23,8 +24,6 @@ search_keyword = [str(item) for item in to_be_downloaded]
 #setting limit on number of images to be downloaded
 if args.limit:
     limit = int(args.limit)
-    if int(args.limit) >= 100:
-        limit = 100
 else:
     limit = 100
 
@@ -205,7 +204,7 @@ def downloaderpatch(string1):
 if __name__ == '__main__':
     jobs = []
     a = to_be_downloaded
-    for i in range(3):
+    for i in range(6):
         p = multiprocessing.Process(target=downloaderpatch, args=(a[i],))
         jobs.append(p)
         p.start()

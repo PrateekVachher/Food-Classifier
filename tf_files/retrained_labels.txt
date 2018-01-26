@@ -1,3 +1,17 @@
+bread
+brownie
+burger
+cake
+carrot
+cookie
+french fries
+fried rice
+nachos
+noodles
+pancake
+pasta
+pizza
+steak
 apple
 apricot
 avocado

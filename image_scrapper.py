@@ -10,6 +10,8 @@ import sys  # Importing the System Library
 import os
 import argparse
 import ssl
+from PIL import Image
+
 
 # Taking command line arguments from users
 parser = argparse.ArgumentParser()
@@ -163,7 +165,9 @@ def downloaderpatch(string1):
                 else:
                     output_file = open(dir_name + "/" + str(k + 1) + ". " + image_name + ".jpg", 'wb')
                     image_name = image_name + ".jpg"
-
+                im = Image.open(image_name)
+                rgb_im = im.convert('RGB')
+                rgb_im.save(image_name)
                 data = response.read()
                 output_file.write(data)
                 response.close()

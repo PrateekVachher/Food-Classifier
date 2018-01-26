@@ -1,7 +1,5 @@
+apple
 banana
-daisy
-dandelion
+cherry
+guava
 orange
-roses
-sunflowers
-tulips

@@ -20,7 +20,9 @@ parser.add_argument('-l', '--limit', help='delimited list input', type=str, requ
 parser.add_argument('-c', '--color', help='filter on color', type=str, required=False, choices=['red', 'orange', 'yellow', 'green', 'teal', 'blue', 'purple', 'pink', 'white', 'gray', 'black', 'brown'])
 args = parser.parse_args()
 
-to_be_downloaded = ['apple fruit','banana fruit','orange fruit','guava fruit','cherry fruit']
+a = open('items_to_scrape.txt','r')
+to_be_downloaded = a.readlines()
+to_be_downloaded = [x[:-1] for x in to_be_downloaded]
 
 search_keyword = [str(item) for item in to_be_downloaded]
 #setting limit on number of images to be downloaded

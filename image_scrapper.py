@@ -133,10 +133,6 @@ def downloaderpatch(string1):
         print ("Total Image Links = " + str(len(items)))
 
         # This allows you to write all the links into a test file. This text file will be created in the same directory as your code. You can comment out the below 3 lines to stop writing the output to the text file.
-        info = open('output.txt', 'a')  # Open the text file called database.txt
-        info.write(str(i) + ': ' + str(search_keyword[i - 1]) + ": " + str(items))  # Write the title of the page
-        info.close()  # Close the file
-
         t1 = time.time()  # stop the timer
         total_time = t1 - t0  # Calculating the total time required to crawl, find and download all the links of 60,000 images
         print("Total time taken: " + str(total_time) + " Seconds")

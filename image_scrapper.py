@@ -154,7 +154,7 @@ def downloaderpatch(string1):
         ## To save imges to the same directory
         # IN this saving process we are just skipping the URL if there is any error
         k = 0
-         while (k < limit):
+        while (k < limit):
             try:
                 req = Request(items[k], headers={
                     "User-Agent": "Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.17 (KHTML, like Gecko) Chrome/24.0.1312.27 Safari/537.17"})

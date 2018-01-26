@@ -11,7 +11,7 @@ import os
 import argparse
 import ssl
 from PIL import Image
-
+from conv import *
 
 # Taking command line arguments from users
 parser = argparse.ArgumentParser()
@@ -123,13 +123,6 @@ def downloaderpatch(string1):
         dir_name = search_term + ('-' + args.color if args.color else '')
 
         # make a search keyword  directory
-        try:
-            os.makedirs(dir_name)
-        except OSError as e:
-            if e.errno != 17:
-                raise
-                # time.sleep might help here
-            pass
 
         j = 0
         color_param = ('&tbs=ic:specific,isc:' + args.color) if args.color else ''
@@ -148,7 +141,16 @@ def downloaderpatch(string1):
         total_time = t1 - t0  # Calculating the total time required to crawl, find and download all the links of 60,000 images
         print("Total time taken: " + str(total_time) + " Seconds")
         print ("Starting Download...")
-
+        dir_name = dir_name.split()
+        dir_name.remove('fruit')
+        dir_name = ' '.join(dir_name)
+        try:
+            os.makedirs(dir_name)
+        except OSError as e:
+            if e.errno != 17:
+                raise
+                # time.sleep might help here
+            pass
         ## To save imges to the same directory
         # IN this saving process we are just skipping the URL if there is any error
         k = 0
@@ -165,9 +167,7 @@ def downloaderpatch(string1):
                 else:
                     output_file = open(dir_name + "/" + str(k + 1) + ". " + image_name + ".jpg", 'wb')
                     image_name = image_name + ".jpg"
-                im = Image.open(image_name)
-                rgb_im = im.convert('RGB')
-                rgb_im.save(image_name)
+
                 data = response.read()
                 output_file.write(data)
                 response.close()
@@ -192,8 +192,10 @@ def downloaderpatch(string1):
                 errorCount += 1
                 print("URLError " + str(k))
                 k = k + 1
+        convert_form(dir_name)
 
         i = i + 1
+
 
     print("\n")
     print("Everything downloaded!")

@@ -1,10 +1,15 @@
+coconut fruit
+lychee fruit
+tomato fruit
+dragonfruit fruit
 apricot fruit
-papaya fruit
-kiwi fruit
-pomegranate fruit
-pineapple fruit
-mango fruit
-grapefruit fruit
-jackfruit fruit
-lemon fruit
-watermelon fruit 
+avocado fruit
+cucumber fruit
+custardapple fruit
+passionfruit fruit
+pear fruit
+peach fruit
+raspberry fruit
+strawberry fruit
+pumpkin fruit
+

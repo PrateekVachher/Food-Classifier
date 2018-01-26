@@ -22,8 +22,8 @@ args = parser.parse_args()
 
 a = open('items_to_scrape.txt','r')
 to_be_downloaded = a.readlines()
-to_be_downloaded = [x[:-1] for x in to_be_downloaded]
-
+to_be_downloaded = [x[:-1] for x in to_be_downloaded if len(x)>1]
+print to_be_downloaded
 search_keyword = [str(item) for item in to_be_downloaded]
 #setting limit on number of images to be downloaded
 limit = 100
